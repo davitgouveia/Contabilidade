@@ -79,6 +79,7 @@ ADD CONSTRAINT fk_TipoPagCompra FOREIGN KEY (tipoPagCompra) REFERENCES tb.tipoPa
 
 ALTER TABLE tb.conta
 ADD CONSTRAINT fk_UserPaga FOREIGN KEY (idPagador) REFERENCES tb.usuario (idUser),
+ADD CONSTRAINT fk_TipoConta FOREIGN KEY (tipoConta) REFERENCES tb.tipoCompra (nomeTipoCompra),
 ADD CONSTRAINT fk_TipoPagConta FOREIGN KEY (tipoPagConta) REFERENCES tb.tipoPagamento (nomeTipoPag),
 ADD CONSTRAINT statusConta CHECK((statusConta = 'PENDENTE') OR (statusConta = 'PAGO') OR (statusConta = 'ATRASADO'));
 
@@ -88,3 +89,20 @@ ADD CONSTRAINT fk_UserRecebe FOREIGN KEY (idRecebedor) REFERENCES tb.usuario (id
 ALTER TABLE tb.divida
 ADD CONSTRAINT fk_UserDeve FOREIGN KEY (idDevedor) REFERENCES tb.usuario (idUser),
 ADD CONSTRAINT fk_UserCredor FOREIGN KEY (idCredor) REFERENCES tb.usuario (idUser);
+
+--Inserindo os valores padrões de tipo Compra
+INSERT INTO tb.tipoCompra VALUES (1, 'Aluguel');
+INSERT INTO tb.tipoCompra VALUES (2, 'Condomínio');
+INSERT INTO tb.tipoCompra VALUES (3, 'Garantia');
+INSERT INTO tb.tipoCompra VALUES (4, 'Mercado');
+INSERT INTO tb.tipoCompra VALUES (5, 'Comida');
+INSERT INTO tb.tipoCompra VALUES (6, 'Gasolina');
+INSERT INTO tb.tipoCompra VALUES (7, 'Transporte');
+INSERT INTO tb.tipoCompra VALUES (8, 'Luz');
+INSERT INTO tb.tipoCompra VALUES (9, 'Gás');
+INSERT INTO tb.tipoCompra VALUES (10, 'Outros');
+
+--Inserindo os valores padrões de tipo Pagamento
+INSERT INTO tb.tipoPagamento VALUES (1, 'Dinheiro');
+INSERT INTO tb.tipoPagamento VALUES (2, 'Debito');
+INSERT INTO tb.tipoPagamento VALUES (3, 'Credito');
